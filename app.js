@@ -19,8 +19,7 @@ yargs.command({
             }
     },
     handler: function(argv){
-        console.log('Title: '+ argv.title )
-        console.log('body: '+ argv.body )
+        getnotes.addNotes(argv.title,argv.body)
 
     }
 
