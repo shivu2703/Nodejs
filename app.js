@@ -1,6 +1,6 @@
-const yargs=require('yargs')
-const chalk=require('chalk')
-const getnotes=require('./notes.js')
+const yargs = require('yargs')
+const chalk = require('chalk')
+const getnotes = require('./notes.js')
 
 
 
@@ -9,19 +9,19 @@ yargs.command({
     command: 'add',
     describe: 'add the notes',
     builder: {
-            title: {
-                describe: 'Note title',
-                demandOption: true,
-                type: 'string'
-            },
-            body: {
-                describe: 'Note content',
-                demandOption: true,
-                type: 'string'   
-            }
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note content',
+            demandOption: true,
+            type: 'string'
+        }
     },
-    handler(argv){
-        getnotes.addNotes(argv.title,argv.body)
+    handler(argv) {
+        getnotes.addNotes(argv.title, argv.body)
 
     }
 
@@ -30,14 +30,14 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'remove the notes',
-    builder:{
-          title: {
+    builder: {
+        title: {
             describe: 'Note Title',
             demandOption: true,
             type: 'string'
-          }
+        }
     },
-    handler(argv){
+    handler(argv) {
         getnotes.removeNotes(argv.title)
     }
 
@@ -47,8 +47,8 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'list out all the notes',
-    handler(argv){
-        console.log(argv)
+    handler() {
+        getnotes.listNotes()
     }
 
 })
@@ -57,8 +57,15 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'read the notes',
-    handler(){
-        console.log("reading the note!")
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        getnotes.readNotes(argv.title)
     }
 
 })
