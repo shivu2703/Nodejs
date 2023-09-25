@@ -9,7 +9,7 @@ const addNotes = (title, body) => {
 
     //  const duplicateNotes= notes.filter((note) => note.title === title) filter check all the array even after finding the duplicates
     //find return first occurence only so it is best method to get the duplicates instead of filter
-    const duplicateNote = notes.find((note) => note.title === title)
+    const duplicateNote = notes.find((note) => note.title === title)   
     if (duplicateNote === undefined) {
         notes.push({
             title: title,
